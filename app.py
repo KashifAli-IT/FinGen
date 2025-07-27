@@ -17,6 +17,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import gradio as gr
 from dateutil.relativedelta import relativedelta
+from fin_genius_chatbot import chat_with_memory_english
+
 
 # Configure logging
 logging.basicConfig(
@@ -2808,6 +2810,26 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
     current_user = gr.State("")
     receipt_data = gr.State({})
     
+    # ===== chatbot testing =====
+    with gr.Tab("💸 FinGenius Chatbot"):
+    chatbot = gr.Chatbot(height=400, type="messages", show_copy_button=True)
+    state = gr.State([])
+
+    with gr.Row():
+        txt = gr.Textbox(
+            placeholder="Enter your question in English...",
+            show_label=False,
+            lines=2
+        )
+        submit = gr.Button("Send")
+
+    submit.click(
+        fn=chat_with_memory_english,
+        inputs=[txt, state],
+        outputs=[chatbot, state, txt]
+    )
+
+
     # ===== LANDING PAGE =====
     with gr.Column(visible=True, elem_classes="fade-in") as landing_page:
         gr.HTML("""
