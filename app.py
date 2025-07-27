@@ -1227,15 +1227,15 @@ class TwilioWhatsAppService:
     """Enhanced Twilio WhatsApp service with better error handling"""
     
     def __init__(self):
-        self.account_sid = os.getenv('TWILIO_ACCOUNT_SID', 'your_account_sid_here')
-        self.auth_token = os.getenv('TWILIO_AUTH_TOKEN', 'your_auth_token_here')
+        self.account_sid = os.getenv('TWILIO_ACCOUNT_SID', 'ACa57ae67d36537487d1e6a3f327f3fdb6')
+        self.auth_token = os.getenv('TWILIO_AUTH_TOKEN', '[AuthToken]')
         self.whatsapp_number = 'whatsapp:+14155238886'  # Twilio Sandbox
         
         self.enabled = False
         self.client = None
         
-        if (self.account_sid != 'your_account_sid_here' and 
-            self.auth_token != 'your_auth_token_here' and 
+        if (self.account_sid != 'ACa57ae67d36537487d1e6a3f327f3fdb6' and 
+            self.auth_token != '[AuthToken]' and 
             TWILIO_AVAILABLE):
             
             try:
@@ -1419,7 +1419,7 @@ def return_to_landing():
         gr.update(visible=False),  # signup_page
         gr.update(visible=False),  # dashboard_page
         "",    # Clear welcome
-        "<div class='balance-amount'>💰 0 PKR</div>"     # Clear balance
+        "<div class='balance-amount'>💰 0.0 PKR</div>"     # Clear balance
     ]
 
 def show_dashboard(phone, name):
