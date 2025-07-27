@@ -2988,23 +2988,23 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
         with gr.Tabs(elem_classes="tab-nav"):
 
               # ===== chatbot testing =====
-    with gr.Tab("💸 FinGenius Chatbot"):
-    chatbot = gr.Chatbot(height=400, type="messages", show_copy_button=True)
-    state = gr.State([])
+              with gr.Tab("💸 FinGenius Chatbot"):
+                chatbot = gr.Chatbot(height=400, type="messages", show_copy_button=True)
+                state = gr.State([])
 
-    with gr.Row():
-        txt = gr.Textbox(
-            placeholder="Enter your question in English...",
-            show_label=False,
-            lines=2
-        )
-        submit = gr.Button("Send")
-
-    submit.click(
-        fn=chat_with_memory_english,
-        inputs=[txt, state],
-        outputs=[chatbot, state, txt]
-    )
+                with gr.Row():
+                    txt = gr.Textbox(
+                        placeholder="Enter your question in English...",
+                        show_label=False,
+                        lines=2
+                    )
+                    submit = gr.Button("Send")
+                
+                    submit.click(
+                        fn=chat_with_memory_english,
+                        inputs=[txt, state],
+                        outputs=[chatbot, state, txt]
+                    )
 
             
             # Enhanced Dashboard Overview Tab
