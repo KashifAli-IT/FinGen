@@ -1228,14 +1228,14 @@ class TwilioWhatsAppService:
     
     def __init__(self):
         self.account_sid = os.getenv('TWILIO_ACCOUNT_SID', 'ACa57ae67d36537487d1e6a3f327f3fdb6')
-        self.auth_token = os.getenv('TWILIO_AUTH_TOKEN', '[AuthToken]')
+        self.auth_token = os.getenv('TWILIO_AUTH_TOKEN', 'a7f9e4df6a5048fb90831af0cd28703d')
         self.whatsapp_number = 'whatsapp:+14155238886'  # Twilio Sandbox
         
         self.enabled = False
         self.client = None
         
         if (self.account_sid != 'ACa57ae67d36537487d1e6a3f327f3fdb6' and 
-            self.auth_token != '[AuthToken]' and 
+            self.auth_token != 'a7f9e4df6a5048fb90831af0cd28703d' and 
             TWILIO_AVAILABLE):
             
             try:
@@ -1282,7 +1282,7 @@ class TwilioWhatsAppService:
             if "not a valid phone number" in error_msg:
                 logger.error(f"❌ Invalid phone number format: {phone}")
             elif "unverified" in error_msg or "sandbox" in error_msg:
-                logger.error(f"❌ WhatsApp not activated. User must send 'join catch-manner' to +14155238886")
+                logger.error(f"❌ WhatsApp not activated. User must send 'join young-pick' to +14155238886")
             elif "forbidden" in error_msg:
                 logger.error(f"❌ Twilio account issue. Check credentials and account status")
             else:
@@ -2922,7 +2922,7 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
                     <div class='whatsapp-steps'>
                         <h4>Step 2: Send Activation Code</h4>
                         <p>Send this exact message to the number above:</p>
-                        <div class='code-highlight'>join catch-manner</div>
+                        <div class='code-highlight'>join young-pick</div>
                         <p style='font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;'>
                             ⚠️ <strong>Critical:</strong> You must send this exact code to activate the sandbox.
                         </p>
@@ -2964,7 +2964,7 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
         
         # Enhanced Current Balance Display
         with gr.Column(elem_classes="balance-card"):
-            balance_display = gr.HTML("<div class='balance-amount'>💰 0 PKR</div>")
+            balance_display = gr.HTML("<div class='balance-amount'>💰 0.0 PKR</div>")
             
             with gr.Row():
                 with gr.Column(scale=2):
@@ -3673,7 +3673,7 @@ if __name__ == "__main__":
     if not twilio.enabled:
         logger.info("   1. Set TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN environment variables")
         logger.info("   2. Or modify credentials directly in TwilioWhatsAppService class")
-    logger.info("   3. Users must send 'join catch-manner' to +14155238886 to activate WhatsApp")
+    logger.info("   3. Users must send 'join young-pick' to +14155238886 to activate WhatsApp")
     logger.info("   4. Use the same phone number for both WhatsApp activation and app registration")
     logger.info("   5. Phone number format: +92XXXXXXXXXX (Pakistan format)")
     logger.info("")
