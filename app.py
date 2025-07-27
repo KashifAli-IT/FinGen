@@ -1419,7 +1419,7 @@ def return_to_landing():
         gr.update(visible=False),  # signup_page
         gr.update(visible=False),  # dashboard_page
         "",    # Clear welcome
-       "<div class='balance-amount'>💰 0.0 PKR</div>"     # Clear balance
+        "<div class='balance-amount'>💰 0.0 PKR</div>"     # Clear balance
     ]
 
 def show_dashboard(phone, name):
@@ -1494,7 +1494,7 @@ def show_dashboard(phone, name):
             gr.update(visible=False),  # signup_page
             gr.update(visible=True),   # dashboard_page
             f"<div class='dashboard-welcome'>Welcome back, <strong>{name}</strong>! 👋</div>",  # welcome message
-            #f"<div class='balance-amount'>💰 {format_currency(current_balance)}</div>",  # balance display
+            f"<div class='balance-amount'>💰 {format_currency(current_balance)}</div>",  # balance display
             phone,  # current_user state
             monthly_income,  # income
             savings_goal,    # savings_goal
