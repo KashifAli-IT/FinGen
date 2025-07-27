@@ -2,7 +2,7 @@ import gradio as gr
 from groq import Groq
 import os
 
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "your_groq_api_key_here")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "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")
 client = Groq(api_key=GROQ_API_KEY)
 
 def chat_with_memory_english(user_input, history):
