@@ -3458,34 +3458,34 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
     # Navigation Events
     signin_btn.click(
         show_signin,
-        outputs=[landing_page, signin_page, signup_page, dashboard_page, signin_phone, signin_password]
+        outputs=[landing_page, signin_page, signup_page, signin_phone, signin_password]
     )
     
     signup_btn.click(
         show_signup,
-        outputs=[landing_page, signin_page, signup_page, dashboard_page, signup_name, signup_phone, signup_password, signup_confirm_password]
+        outputs=[landing_page, signin_page, signup_page, signup_name, signup_phone, signup_password, signup_confirm_password]
     )
     
     back_to_landing_1.click(
         return_to_landing,
-        outputs=[landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display]
+        outputs=[landing_page, signin_page, signup_page, welcome_message, balance_display]
     )
     
     back_to_landing_2.click(
         return_to_landing,
-        outputs=[landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display]
+        outputs=[landing_page, signin_page, signup_page, welcome_message, balance_display]
     )
     
     sign_out_btn.click(
         return_to_landing,
-        outputs=[landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display]
+        outputs=[landing_page, signin_page, signup_page, welcome_message, balance_display]
     )
 
     # Authentication Events
     submit_signin.click(
         handle_signin,
         inputs=[signin_phone, signin_password],
-        outputs=[signin_status, landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display, current_user, income, savings_goal] + allocation_inputs + [expense_table, investments_table, spending_log_table, spending_chart, balance_chart, family_info, family_members, receipts_table]
+        outputs=[signin_status, landing_page, signin_page, signup_page, welcome_message, balance_display, current_user, income, savings_goal] + allocation_inputs + [expense_table, investments_table, spending_log_table, spending_chart, balance_chart, family_info, family_members, receipts_table]
     )
     
     submit_signup.click(
