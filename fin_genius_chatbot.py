@@ -63,42 +63,6 @@ def chat_with_memory_auto_language(user_input, history):
 
     return history, history, ""
 
-
-"""
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "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")
-client = Groq(api_key=GROQ_API_KEY)
-
-def chat_with_memory_english(user_input, history):
-    system_prompt = (
-        "You are FinGenius, a friendly financial planning assistant for young people in Pakistan. "
-        "Always respond in English only. Provide budgeting advice, saving tips, and basic investment suggestions. "
-        "Avoid using any non-English language or mixed-language replies."
-    )
-
-    if history is None:
-        history = []
-
-    messages = [{"role": "system", "content": system_prompt}] + history
-    messages.append({"role": "user", "content": user_input})
-
-    try:
-        response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=messages,
-            temperature=0.7,
-            max_tokens=800
-        )
-        bot_reply = response.choices[0].message.content.strip()
-    except Exception as e:
-        bot_reply = f"❌ Error: {str(e)}"
-
-    history.append({"role": "user", "content": user_input})
-    history.append({"role": "assistant", "content": bot_reply})
-
-    return history, history, ""
-
-"""
-
 def launch_fin_genius():
     with gr.Blocks(css="""
     body {
@@ -136,12 +100,6 @@ def launch_fin_genius():
                     lines=2
                 )
                 submit = gr.Button("Send")
-"""
-            submit.click(
-                fn=chat_with_memory_english,
-                inputs=[txt, state],
-                outputs=[chatbot, state, txt]
-            )  """
 
             submit.click(
                 fn=chat_with_memory_auto_language,
