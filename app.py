@@ -2958,36 +2958,36 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
             signup_status = gr.Textbox(label="Status", interactive=False, elem_classes="status-display")
 
             
-            # ===== DASHBOARD PAGE =====
-            with gr.Column(visible=False, elem_classes="fade-in") as dashboard_page:
-                # Enhanced Dashboard Header
-                welcome_message = gr.HTML("", elem_classes="dashboard-header")
+        # ===== DASHBOARD PAGE =====
+        with gr.Column(visible=False, elem_classes="fade-in") as dashboard_page:
+            # Enhanced Dashboard Header
+            welcome_message = gr.HTML("", elem_classes="dashboard-header")
+            
+            # Enhanced Current Balance Display
+            with gr.Column(elem_classes="balance-card"):
+                balance_display = gr.HTML("<div class='balance-amount'>💰 0.0 PKR</div>")
                 
-                # Enhanced Current Balance Display
-                with gr.Column(elem_classes="balance-card"):
-                    balance_display = gr.HTML("<div class='balance-amount'>💰 0.0 PKR</div>")
-                    
-                    with gr.Row():
-                        with gr.Column(scale=2):
-                            balance_amount = gr.Number(
-                                label="💰 Add to Balance (PKR)", 
-                                minimum=1, 
-                                step=100, 
-                                value=0,
-                                info="Add money from salary, bonus, or other income sources"
-                            )
-                            balance_description = gr.Textbox(
-                                label="Description", 
-                                placeholder="e.g., Monthly salary, freelance payment, gift money",
-                                info="Optional: Add a note about this income"
-                            )
-                        with gr.Column(scale=1):
-                            add_balance_btn = gr.Button("Add Balance", variant="primary", elem_classes="primary-btn", size="lg")
-                
-                balance_status = gr.Textbox(label="Balance Status", interactive=False, elem_classes="status-display")
-                
-                with gr.Tabs(elem_classes="tab-nav"):
-                   
+                with gr.Row():
+                    with gr.Column(scale=2):
+                        balance_amount = gr.Number(
+                            label="💰 Add to Balance (PKR)", 
+                            minimum=1, 
+                            step=100, 
+                            value=0,
+                            info="Add money from salary, bonus, or other income sources"
+                        )
+                        balance_description = gr.Textbox(
+                            label="Description", 
+                            placeholder="e.g., Monthly salary, freelance payment, gift money",
+                            info="Optional: Add a note about this income"
+                        )
+                    with gr.Column(scale=1):
+                        add_balance_btn = gr.Button("Add Balance", variant="primary", elem_classes="primary-btn", size="lg")
+            
+            balance_status = gr.Textbox(label="Balance Status", interactive=False, elem_classes="status-display")
+            
+            with gr.Tabs(elem_classes="tab-nav"):
+
             # ===== chatbot testing =====
             with gr.Tab("💸 FinGenius Chatbot"):
                 chatbot = gr.Chatbot(height=400, type="messages", show_copy_button=True)
