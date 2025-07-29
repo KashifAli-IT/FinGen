@@ -2987,12 +2987,11 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
                 balance_status = gr.Textbox(label="Balance Status", interactive=False, elem_classes="status-display")
                 
                 with gr.Tabs(elem_classes="tab-nav"):
-                    
+                   
             # ===== chatbot testing =====
             with gr.Tab("💸 FinGenius Chatbot"):
                 chatbot = gr.Chatbot(height=400, type="messages", show_copy_button=True)
                 state = gr.State([])
-
                 with gr.Row():
                     txt = gr.Textbox(
                         placeholder="Enter your question in English...",
