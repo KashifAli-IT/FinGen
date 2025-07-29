@@ -17,7 +17,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import gradio as gr
 from dateutil.relativedelta import relativedelta
-from fin_genius_chatbot import chat_with_memory_english
+from fin_genius_chatbot import chat_with_memory_auto_language
 
 
 # Configure logging
