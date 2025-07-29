@@ -3001,7 +3001,7 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
                     submit = gr.Button("Send")
                 
                     submit.click(
-                        fn=chat_with_memory_english,
+                        fn=chat_with_memory_auto_language,
                         inputs=[txt, state],
                         outputs=[chatbot, state, txt]
                     )
