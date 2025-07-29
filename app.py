@@ -2314,6 +2314,30 @@ custom_css = """
     border-left: 4px solid rgba(255, 255, 255, 0.5);
 }
 
+/* Enhanced Dashboard Styling */
+.dashboard-header {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.6rem;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-welcome {
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.dashboard-welcome strong {
+    font-weight: 600;
+    color: #ffd700;
+}
 
 .balance-card {
     background: linear-gradient(135deg, var(--success-color) 0%, #38a169 100%);
@@ -2933,6 +2957,37 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
             
             signup_status = gr.Textbox(label="Status", interactive=False, elem_classes="status-display")
 
+            
+            # ===== DASHBOARD PAGE =====
+            with gr.Column(visible=False, elem_classes="fade-in") as dashboard_page:
+                # Enhanced Dashboard Header
+                welcome_message = gr.HTML("", elem_classes="dashboard-header")
+                
+                # Enhanced Current Balance Display
+                with gr.Column(elem_classes="balance-card"):
+                    balance_display = gr.HTML("<div class='balance-amount'>💰 0.0 PKR</div>")
+                    
+                    with gr.Row():
+                        with gr.Column(scale=2):
+                            balance_amount = gr.Number(
+                                label="💰 Add to Balance (PKR)", 
+                                minimum=1, 
+                                step=100, 
+                                value=0,
+                                info="Add money from salary, bonus, or other income sources"
+                            )
+                            balance_description = gr.Textbox(
+                                label="Description", 
+                                placeholder="e.g., Monthly salary, freelance payment, gift money",
+                                info="Optional: Add a note about this income"
+                            )
+                        with gr.Column(scale=1):
+                            add_balance_btn = gr.Button("Add Balance", variant="primary", elem_classes="primary-btn", size="lg")
+                
+                balance_status = gr.Textbox(label="Balance Status", interactive=False, elem_classes="status-display")
+                
+                with gr.Tabs(elem_classes="tab-nav"):
+                    
             # ===== chatbot testing =====
             with gr.Tab("💸 FinGenius Chatbot"):
                 chatbot = gr.Chatbot(height=400, type="messages", show_copy_button=True)
@@ -2951,7 +3006,50 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
                         inputs=[txt, state],
                         outputs=[chatbot, state, txt]
                     )
-
+                    
+            # Enhanced Dashboard Overview Tab
+            with gr.Tab("📊 Dashboard Overview"):
+                gr.HTML("""
+                    <div class="info-card gradient-bg-2" style="color: white; text-align: center; padding: 3rem; border-radius: 15px; margin: 2rem 0;">
+                        <h2 style="font-size: 2.2rem; font-weight: 600; margin-bottom: 1rem;">🎉 Welcome to FinGenius Pro!</h2>
+                        <p style="font-size: 1.3rem; opacity: 0.95; line-height: 1.6; font-weight: 300;">Your comprehensive financial management solution is ready. Let's build your financial future together!</p>
+                    </div>
+                """)
+                
+                with gr.Row():
+                    with gr.Column():
+                        gr.HTML("""
+                            <div class="info-card">
+                                <h3 style="color: white;">🚀 Quick Start Guide</h3>
+                                <ol style="text-align: left; margin-left: 1.5rem; line-height: 2; color: #4a5568;">
+                                    <li><strong>💰 Add Initial Balance:</strong> Use the balance card above to add your starting funds</li>
+                                    <li><strong>📊 Set Financial Goals:</strong> Navigate to "Income & Goals" to set your monthly income and savings targets</li>
+                                    <li><strong>📋 Plan Your Budget:</strong> Use "Budget Planner" to allocate money across expense categories</li>
+                                    <li><strong>💸 Track Daily Expenses:</strong> Log your spending in "Expense Tracker" with automatic categorization</li>
+                                    <li><strong>📷 Scan Receipts:</strong> Use "Receipt Scan" for AI-powered expense extraction from photos</li>
+                                    <li><strong>📈 Monitor Investments:</strong> Keep track of your investment portfolio and growth</li>
+                                    <li><strong>👪 Family Finance:</strong> Create or join family groups for collaborative budgeting</li>
+                                    <li><strong>📊 Analyze Trends:</strong> Review spending patterns and balance trends in analytics</li>
+                                </ol>
+                            </div>
+                        """)
+                    
+                    with gr.Column():
+                        gr.HTML("""
+                            <div class="info-card">
+                                <h3>🎯 Pro Tips for Success</h3>
+                                <ul style="text-align: left; margin-left: 1.5rem; line-height: 2; color: #4a5568;">
+                                    <li><strong>🔔 Enable WhatsApp Alerts:</strong> Get real-time notifications for all financial activities</li>
+                                    <li><strong>📅 Daily Habit:</strong> Log expenses immediately to maintain accurate records</li>
+                                    <li><strong>🎯 Set Realistic Goals:</strong> Start with achievable savings targets and increase gradually</li>
+                                    <li><strong>📊 Weekly Reviews:</strong> Check your spending patterns every week</li>
+                                    <li><strong>🏷️ Categorize Properly:</strong> Use specific categories for better insights</li>
+                                    <li><strong>💡 Use Receipt Scanner:</strong> Save time with AI-powered expense extraction</li>
+                                    <li><strong>👨‍👩‍👧‍👦 Family Collaboration:</strong> Share financial goals with family members</li>
+                                    <li><strong>📈 Track ROI:</strong> Monitor your investment performance regularly</li>
+                                </ul>
+                            </div>
+                        """)
             
             # Enhanced Income & Goals Tab
             with gr.Tab("📥 Income & Goals"):
@@ -3458,34 +3556,34 @@ with gr.Blocks(title="FinGenius Pro", theme=gr.themes.Soft(), css=custom_css) as
     # Navigation Events
     signin_btn.click(
         show_signin,
-        outputs=[landing_page, signin_page, signup_page, signin_phone, signin_password]
+        outputs=[landing_page, signin_page, signup_page, dashboard_page, signin_phone, signin_password]
     )
     
     signup_btn.click(
         show_signup,
-        outputs=[landing_page, signin_page, signup_page, signup_name, signup_phone, signup_password, signup_confirm_password]
+        outputs=[landing_page, signin_page, signup_page, dashboard_page, signup_name, signup_phone, signup_password, signup_confirm_password]
     )
     
     back_to_landing_1.click(
         return_to_landing,
-        outputs=[landing_page, signin_page, signup_page, welcome_message, balance_display]
+        outputs=[landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display]
     )
     
     back_to_landing_2.click(
         return_to_landing,
-        outputs=[landing_page, signin_page, signup_page, welcome_message, balance_display]
+        outputs=[landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display]
     )
     
     sign_out_btn.click(
         return_to_landing,
-        outputs=[landing_page, signin_page, signup_page, welcome_message, balance_display]
+        outputs=[landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display]
     )
 
     # Authentication Events
     submit_signin.click(
         handle_signin,
         inputs=[signin_phone, signin_password],
-        outputs=[signin_status, landing_page, signin_page, signup_page, welcome_message, balance_display, current_user, income, savings_goal] + allocation_inputs + [expense_table, investments_table, spending_log_table, spending_chart, balance_chart, family_info, family_members, receipts_table]
+        outputs=[signin_status, landing_page, signin_page, signup_page, dashboard_page, welcome_message, balance_display, current_user, income, savings_goal] + allocation_inputs + [expense_table, investments_table, spending_log_table, spending_chart, balance_chart, family_info, family_members, receipts_table]
     )
     
     submit_signup.click(
