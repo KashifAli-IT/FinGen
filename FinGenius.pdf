@@ -1,0 +1,86 @@
+🧠 FinGenius – Smart Finance Planner for Pakistan 🇵🇰
+FinGenius is a GenAI-powered personal finance assistant designed to help individuals and families in Pakistan manage money smarter. Built during the Pak Angels GenAI Hackathon, the app leverages cutting-edge tools like LLMs, OCR, and SMS automation to turn complex financial tasks into simple, guided conversations.
+
+🚀 Features
+✅ Finance Chatbot (Groq LLaMA3)
+Chat in English, Urdu, or Roman Urdu. Get help with:
+
+Budgeting
+
+Savings goals
+
+Income tax estimates
+
+Currency exchange rates
+
+✅ Receipt OCR Scanner
+Upload a receipt image → Automatically extract:
+
+Merchant name
+
+Date
+
+Amount
+
+Line items
+
+Category
+
+✅ SMS Reminders with Twilio
+Stay on track with your savings goals via automated WhatsApp/SMS alerts (optional setup).
+
+✅ Spending Dashboard (Plotly)
+Visualize your income, expenses, and balance over time with interactive charts.
+
+✅ Family Finance Tools
+Create or join a shared family group to manage finances together.
+
+🧱 Tech Stack
+Feature	Tech Used
+Chatbot	Groq (LLaMA3-70B) + Gradio
+OCR	pytesseract + OpenCV
+Visualization	Plotly, Pandas
+UI	Gradio 3.50
+Notifications	Twilio (SMS / WhatsApp)
+Backend Logic	Python 3.10
+Deployment	Hugging Face Spaces
+
+🛠️ Installation
+Clone the repo and install dependencies:
+
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/fingenius.git
+cd fingenius
+pip install -r requirements.txt
+Also install Tesseract (OCR engine):
+
+Ubuntu
+bash
+Copy
+Edit
+sudo apt install tesseract-ocr
+Windows
+Download: https://github.com/tesseract-ocr/tesseract
+
+Add Tesseract path to environment variables (e.g., C:\Program Files\Tesseract-OCR)
+
+🧪 Run Locally
+bash
+python app.py
+
+📚 Example Prompts
+"I earn PKR 120,000 per month. What is my income tax in Pakistan?"
+
+"I want to buy a phone for PKR 90,000 in 5 months. How much should I save monthly?"
+
+"یہ رسید اسکین کرو اور اخراجات نکالو"
+
+🤝 Team Credits
+Built with ❤️ by Team FinGenius
+During Pak Angels GenAI Hackathon – July 2025
+Contributors: Kashif Ali and team
+
+📌 Disclaimer
+This is a prototype for educational/demo purposes. Financial advice generated is illustrative only.
