@@ -9,4 +9,3 @@ pytesseract==0.3.10
 python-dotenv==1.0.0
 twilio==9.0.0
 groq
-supabase
